@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
 import Banner from './componente/Banner/Banner';
+import Formulario from './componente/Formulario';
 
 function App() {
+
+  const [colaboradores, setColaboradores] = useState([]);
+  const aoNovoColaboradorAdcionado = (colaborador) => {
+    console.log(colaborador);
+    setColaboradores([...colaboradores, colaborador])
+  }
+
   return (
     <div className="App">
       <Banner />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edite <code>src/App.js </code> e salve para recarregar.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Formulario aoColaboradorCadastrado = {colaborador => aoNovoColaboradorAdcionado(colaborador)} />
     </div>
   );
 }
